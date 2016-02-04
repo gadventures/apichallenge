@@ -1,10 +1,10 @@
-<html>
-<head>
-<title> Trips </title>
-</head>
-<body>
-
-<h1>Trips</h1>
-
-</body>
-</html>
+{% block content %}
+	<title> Api Challenge! </title>
+	<h2 align="center">----- Available Trips -----</h2><br>
+	{%for trip in trips %}
+		<li align="center"><h3>Trip Name: {{ trip.name }}</h2>  
+		Start Date: {{trip.start_date}} <br>End Date: {{trip.finish_date}} 
+		<br>Tour Capacity: {{trip.tour_capacity}} <br>Tour Price: {{trip.package_price}} 
+		<br>Tour Location: {{trip.package_location}} <br><br></li>
+	{% endfor %}
+{% endblock %}
