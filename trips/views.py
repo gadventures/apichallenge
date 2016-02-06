@@ -1,36 +1,25 @@
 from trips.models import Trip
 from trips.serializer import TripSerializer
 
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
+from django.http import Http404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
-
-class JSONResponse(HttpResponse):
-
-    def __init__(self, data, **kwargs):
-        content = JSONRenderer().render(data)
-        kwargs['content_type'] = 'application/json'
-        super(JSONResponse, self).__init__(content, **kwargs)
-	
-@csrf_exempt
-def trip_list(request):
-
-    if request.method == 'GET':
+class TripList(APIView):
+    def get(self, request, format=None):
         trips = Trip.objects.all()
         serializer = TripSerializer(trips, many=True)
-        return JSONResponse(serializer.data)
+        return Response(serializer.data)
 
-@csrf_exempt
-def trip_detail(request, pk):
+class TripDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return Trip.objects.get(pk=pk)
+        except Trip.DoesNotExist:
+            raise Http404
 
-    try:
-        trip = Trip.objects.get(pk=pk)
-    except Trip.DoesNotExist:
-        return HttpResponse(status=404)
-
-    if request.method == 'GET':
+    def get(self, request, pk, format=None):
+        trip = self.get_object(pk)
         serializer = TripSerializer(trip)
-        return JSONResponse(serializer.data)
-
+        return Response(serializer.data)
