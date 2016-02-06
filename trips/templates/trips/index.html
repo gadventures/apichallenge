@@ -4,7 +4,20 @@
 </head>
 <body>
 
-<h1>Trips</h1>
+<table style="width:50%" border="1">
+	<tr>
+		<th>City</th>
+		<th>Start Date</th> 
+		<th>Finish Date</th>
+	</tr>
+	{% for t in trips %}
+	<tr>
+		<td> <a href = "https://en.wikipedia.org/wiki/{{t.name}}">{{t.name}}</a></td>
+		<td>{{t.start_date}}</td> 
+		<td>{{t.finish_date}}</td>
+    </tr>
+	{% endfor %}
+</table>
 
 </body>
 </html>
