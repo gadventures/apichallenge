@@ -1,0 +1,32 @@
+[
+	{
+		"model": "trips.Trip",
+		"pk": 1,
+		"fields":{
+			"name": "Trip 1",
+			"start_date": "2016-02-06",
+			"finish_date": "2016-02-08"
+		}
+	
+	},
+	{
+		"model": "trips.Trip",
+		"pk": 2,
+		"fields":{
+			"name": "Trip 2",
+			"start_date": "2016-02-10",
+			"finish_date": "2016-02-11"
+		}
+	
+	},
+	{
+		"model": "trips.Trip",
+		"pk": 3,
+		"fields":{
+			"name": "Trip 3",
+			"start_date": "2016-03-1",
+			"finish_date": "2016-03-10"
+		}
+	
+	}
+]

@@ -1,7 +1,7 @@
 from django.conf.urls import url
-
-from .views import TripView
+from trips import views
 
 urlpatterns = [
-    url('^', TripView.as_view())
+    url(r'^$', views.trip_list),
+    url(r'^(?P<pk>[0-9]+)/$', views.trip_detail)
 ]
