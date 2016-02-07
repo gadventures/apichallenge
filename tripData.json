@@ -3,9 +3,10 @@
 		"model": "trips.Trip",
 		"pk": 1,
 		"fields":{
-			"name": "Trip 1",
+			"name": "Cuba Excursion",
 			"start_date": "2016-02-06",
-			"finish_date": "2016-02-08"
+			"finish_date": "2016-02-08",
+			"destination": "Cuba"
 		}
 	
 	},
@@ -13,9 +14,10 @@
 		"model": "trips.Trip",
 		"pk": 2,
 		"fields":{
-			"name": "Trip 2",
+			"name": "Tour of Asia",
 			"start_date": "2016-02-10",
-			"finish_date": "2016-02-11"
+			"finish_date": "2016-02-11",
+			"destination": "Japan"
 		}
 	
 	},
@@ -23,9 +25,21 @@
 		"model": "trips.Trip",
 		"pk": 3,
 		"fields":{
-			"name": "Trip 3",
+			"name": "Alps Adventure",
 			"start_date": "2016-03-1",
-			"finish_date": "2016-03-10"
+			"finish_date": "2016-03-10",
+			"destination": "Switzerland"
+		}
+	
+	},
+	{
+		"model": "trips.Trip",
+		"pk": 4,
+		"fields":{
+			"name": "Alps Adventure",
+			"start_date": "2016-04-1",
+			"finish_date": "2016-05-10",
+			"destination": "Switzerland"
 		}
 	
 	}

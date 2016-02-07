@@ -1,10 +1,13 @@
-<html>
-<head>
-<title> Trips </title>
-</head>
-<body>
-
-<h1>Trips</h1>
-
-</body>
-</html>
+{% block content %}
+	<title> Api Challenge Trips </title>
+	<h2>List of Trips</h2><br>
+	{%for trip in trips %}
+		<ul class='pagination'>
+			<li>
+				<h3>{{ trip.name }}</h3>  
+				Start Date: {{trip.start_date}} <br>
+				End Date: {{trip.finish_date}} 
+			</li>
+		</ul>
+	{% endfor %}
+{% endblock %}
