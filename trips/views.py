@@ -3,6 +3,8 @@ from django.shortcuts import render
 from rest_framework import generics
 from serializers import TripSerializer
 from models import Trip
+import json
+from django.http import HttpResponse
 
 class TripViewAPI(generics.ListCreateAPIView):   
     queryset = Trip.objects.all()
@@ -14,6 +16,3 @@ class TripViewAPIDetail(generics.RetrieveUpdateDestroyAPIView):
     
 class TripView(TemplateView):
     template_name = 'trips/index.html'
-    
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {'trips': Trip.objects.all().order_by('finish_date')})
