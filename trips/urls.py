@@ -2,10 +2,9 @@ from django.conf.urls import url
 from trips import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
+""" Define all the views with as_view()"""
 trip_list = views.TripList.as_view()
 trip_detail = views.TripDetail.as_view()
-
-
 trip_list_view = views.TripView.as_view()
 
 urlpatterns = [

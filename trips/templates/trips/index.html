@@ -2,11 +2,12 @@
 	<title> Api Challenge Trips </title>
 	<h2>List of Trips</h2><br>
 	{%for trip in trips %}
-		<ul class='pagination'>
+		<ul>
 			<li>
 				<h3>{{ trip.name }}</h3>  
 				Start Date: {{trip.start_date}} <br>
-				End Date: {{trip.finish_date}} 
+				End Date: {{trip.finish_date}} <br>
+				Destination: {{trip.destination}}
 			</li>
 		</ul>
 	{% endfor %}
