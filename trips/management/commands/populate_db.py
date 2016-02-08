@@ -5,8 +5,8 @@ import random
 
 class Command(BaseCommand):
 
+     """ Script to populate database with 100 randomized Trip objects """
     def handle(self, *args, **options):
-        """ Script to populate database with 100 randomized Trip objects """
         
         locations = ["London", "Toronto", "Paris", "New York", "Auckland", 
                     "Stockholm", "Dresden", "Shangai", "Dublin", "Moscow",
@@ -22,6 +22,8 @@ class Command(BaseCommand):
             start_date = datetime(year, month, day)
             end_date = start_date + timedelta(weeks=1)
             
-            t = Trip(name=locations[random.choice(range(0, 15))], start_date=start_date, finish_date=end_date);
+            t = Trip(name=locations[random.choice(range(0, 15))], 
+                                    start_date=start_date, 
+                                    finish_date=end_date);
             t.save();
             

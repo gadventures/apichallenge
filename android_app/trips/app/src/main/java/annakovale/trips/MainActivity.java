@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         new RetrieveFeedTask().execute();
     }
-
+    
     class RetrieveFeedTask extends AsyncTask<Void, Void, String> {
 
         private Exception exception;
 
+        /*** Requests content from the API ***/
         protected String doInBackground(Void... urls) {
 
             try {

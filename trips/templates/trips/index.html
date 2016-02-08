@@ -3,7 +3,7 @@
 		<head>
 			<title>Trips</title>
 			<script type = "text/javascript" language = "javascript">
-			
+			// Sends a request for the API 
 			var xmlhttp = new XMLHttpRequest();
 			var url = "http://127.0.0.1:8000/trips/api/";
 			
@@ -16,6 +16,7 @@
 			 xmlhttp.open("GET", url, true);
 			 xmlhttp.send();
 
+             // Given an array, outputs it's contents into HTML form 
 			 function myFunction(arr) {
 			     var out = "";
 			     var i;
@@ -25,6 +26,7 @@
 				 document.writeln("<table style=\"width:50%\" border=\"1\"><tr><th>Name</th><th>Start Date</th><th>End Date</th></tr>" + out + "</table>");
 			 }
 		 
+             // Sorts array by the given predicate
 			 function predicatBy(prop){
 				 return function(a,b){
 					 if( a[prop] > b[prop]){
