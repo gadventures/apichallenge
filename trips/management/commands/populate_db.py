@@ -6,7 +6,7 @@ import random
 class Command(BaseCommand):
 
      """ Script to populate database with 100 randomized Trip objects """
-    def handle(self, *args, **options):
+     def handle(self, *args, **options):
         
         locations = ["London", "Toronto", "Paris", "New York", "Auckland", 
                     "Stockholm", "Dresden", "Shangai", "Dublin", "Moscow",
