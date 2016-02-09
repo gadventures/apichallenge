@@ -29,8 +29,6 @@ def trip_list(request):
 
     elif request.method == 'POST':        
         data = JSONParser().parse(request)
-        if Trip.objects.get(name=data['name']):
-            return '', 422
         trip = Trip.objects.create(name=data['name'], start_date=data['start_date'], finish_date=data['finish_date'])
         trip.save()
         return JSONResponse(data, status=201)        

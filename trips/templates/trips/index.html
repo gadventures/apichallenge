@@ -12,8 +12,8 @@
   <!-- add a trip -->
   <p id="new_trip">
     <input id="name" value="Enter new trip name.." onfocus="if (this.value == 'Enter new trip name..') this.value=''"  />
-    <input id="start_date"  value="Start date.." onfocus="if (this.value == 'Start date..') this.value=''"  />
-    <input id="finish_date" value="Finish date.." onfocus="if (this.value == 'Finish date..') this.value=''"  />    
+    <input id="start_date"  value="YYYY-MM-DD.." onfocus="if (this.value == 'YYYY-MM-DD..') this.value=''"  />
+    <input id="finish_date" value="YYYY-MM-DD.." onfocus="if (this.value == 'YYYY-MM-DD..') this.value=''"  />    
     <button id="add_trip">Add</button>
   </p>
   
@@ -35,7 +35,7 @@ $(function (){
 		    $('#all_trips_show').append('<tr><td>Name</td><td>Start Date</td><td>Finish Date</td></tr>')
 		  };
 	      $.each(trips, function (i, trip){
-  	        $('#all_trips_show').append('<tr><td>'+trip.name+'</td><td>'+trip.start_date+'</td><td>'+trip.finish_date+'</td></tr>')
+  	        $('#all_trips_show').append('<tr><td id="name">'+trip.name+'</td><td>'+trip.start_date+'</td><td>'+trip.finish_date+'</td><td><button id="remove" >Delete</button></td></tr>')
 	      });
         },
         error: function() {
@@ -62,8 +62,8 @@ $(function (){
 		  getTrips();
 		  // reset values for input windows
 		  $('#name').val("Enter new trip name..");
-	      $('#lat').val("Start date..");
-		  $('#lng').val("Finish date..");
+	      $('#start_date').val("YYYY-MM-DD..");
+		  $('#finish_date').val("YYYY-MM-DD..");
 		  },
 		error: function() {
 		  alert('error adding trip');
@@ -76,19 +76,52 @@ $(function (){
   var checkTrip = function (trip){
     var check = true;
   	if ((trip.name.length == 0) || (trip.name == "Enter new trip name..")){
-	    alert('Name required');
-		check = false;
+	  alert('Name required');
+	  check = false;
 	}
-	if ((trip.start_date.length == 0) || (trip.start_date == "Start date..")){
-	    alert('Start sate required');
-		check = false;
-	} 
-	if ((trip.finish_date.length == 0) || (trip.finish_date == "Finish date..")){
-	    alert('Finish sate required');
-		check = false;
-	} 
+	if ((trip.start_date.length == 0) || (trip.start_date == "YYYY-MM-DD..")){
+	  alert('Start date required');
+	  check = false;
+	}
+	if (isValidDate(trip.start_date) == false){
+	  alert('Start date format should be YYYY-MM-DD');
+	  check = false;
+	}
+	if ((trip.finish_date.length == 0) || (trip.finish_date == "YYYY-MM-DD..")){
+	  alert('Finish date required');
+      check = false;
+	}
+	if (isValidDate(trip.finish_date) == false){
+	  alert('Start date format should be YYYY-MM-DD');
+	  check = false;
+	}
 	return check;
   }
+  function isValidDate(dateString) {
+    var regEx = /^\d{4}-\d{2}-\d{2}$/;
+    return dateString.match(regEx) != null;
+  }
+  
+  // delete trip
+  var deleteTrip = function(name) {
+	var del_trip = {
+      name: name
+	};
+	$.ajax({
+	  type: 'DELETE',
+	  url: '/api/',
+	  data: JSON.stringify(del_trip),
+	  success: function() {
+	    getTrips();
+	  },
+	  error: function() {
+	    alert('error deleting trip');
+	  }
+    });
+    };
+	$("#all_trips_show").delegate('#remove', 'click', function() {
+      deleteTrip($(this).closest('tr').find('#name').html()); 
+	});
 });
 </script>
 </html>
