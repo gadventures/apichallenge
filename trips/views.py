@@ -31,7 +31,12 @@ def trip_list(request):
         data = JSONParser().parse(request)
         trip = Trip.objects.create(name=data['name'], start_date=data['start_date'], finish_date=data['finish_date'])
         trip.save()
-        return JSONResponse(data, status=201)        
+        return JSONResponse(data, status=201)    
+
+    elif request.method == 'DELETE':
+        data = JSONParser().parse(request)
+        Trip.objects.filter(name=data['name']).delete()
+        return HttpResponse(status=204)
 		
 @csrf_exempt
 def trip_detail(request, pk):

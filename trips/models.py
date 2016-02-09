@@ -7,6 +7,7 @@ class Trip(models.Model):
     name = models.CharField(max_length=55)
     start_date = models.DateField()
     finish_date = models.DateField()
-    
+
+# order by start date in the view
     class Meta:
-        ordering = ('name',)
+        ordering = ('start_date',)
