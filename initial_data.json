@@ -1,0 +1,38 @@
+[
+  {
+    "model": "trips.Trip",
+    "pk": 1,
+    "fields": {
+      "name": "Caribbean",
+      "start_date": "2016-02-14",
+      "finish_date": "2016-02-24",
+      "tour_capacity": 20, 
+      "package_price": 2000, 
+      "package_location": "Cuba" 
+    }
+  },
+  {
+    "model": "trips.Trip",
+    "pk": 2,
+    "fields": {
+      "name": "European",
+      "start_date": "2016-04-10",
+      "finish_date": "2016-04-20",
+      "tour_capacity": 30,
+      "package_price": 4000,
+      "package_location": "France"     
+    }
+  },
+  {
+    "model": "trips.Trip",
+    "pk": 3,
+    "fields": {
+      "name": "Great North",
+      "start_date": "2016-08-17",
+      "finish_date": "2016-08-27",
+      "tour_capacity": 10,
+      "package_price": 1000,
+      "package_location": "Alaska"
+    }
+  }
+]
