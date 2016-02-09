@@ -1,10 +1,94 @@
 <html>
 <head>
+
+<!-- importing AJAX library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <title> Trips </title>
 </head>
 <body>
 
 <h1>Trips</h1>
-
+	
+  <!-- add a trip -->
+  <p id="new_trip">
+    <input id="name" value="Enter new trip name.." onfocus="if (this.value == 'Enter new trip name..') this.value=''"  />
+    <input id="start_date"  value="Start date.." onfocus="if (this.value == 'Start date..') this.value=''"  />
+    <input id="finish_date" value="Finish date.." onfocus="if (this.value == 'Finish date..') this.value=''"  />    
+    <button id="add_trip">Add</button>
+  </p>
+  
+  <!-- display existing trips -->
+  <table id="all_trips_show">
 </body>
+
+<!-- Script for listeners, AJAX interaction with API -->
+<script>
+$(function (){
+  // Loading list of trips
+  var getTrips = function (){
+    $.ajax({
+        type: 'GET',
+	    url: '/api/',
+	    success: function(trips) {
+	      $('#all_trips_show').find('tr').remove()
+		  if(trips.length > 0){
+		    $('#all_trips_show').append('<tr><td>Name</td><td>Start Date</td><td>Finish Date</td></tr>')
+		  };
+	      $.each(trips, function (i, trip){
+  	        $('#all_trips_show').append('<tr><td>'+trip.name+'</td><td>'+trip.start_date+'</td><td>'+trip.finish_date+'</td></tr>')
+	      });
+        },
+        error: function() {
+          alert('error loading trip list');
+        }
+    });
+  }
+  $(window).load(getTrips);
+  
+  // Posting new trip
+  var postTrip = function (){
+    var trip = {
+	  name: $('#name').val(),
+	  start_date:  $('#start_date').val(),
+	  finish_date:  $('#finish_date').val()
+	};	
+	if (checkTrip(trip)) {
+	  $.ajax({
+		type: 'POST',
+		url: '/api/',
+		data: JSON.stringify(trip),
+		success: function() {
+		  // refresh the list of trips
+		  getTrips();
+		  // reset values for input windows
+		  $('#name').val("Enter new trip name..");
+	      $('#lat').val("Start date..");
+		  $('#lng').val("Finish date..");
+		  },
+		error: function() {
+		  alert('error adding trip');
+		}
+	  }); 
+	}
+  }
+  $('#add_trip').click(postTrip);
+  //check if all fields are fileld out
+  var checkTrip = function (trip){
+    var check = true;
+  	if ((trip.name.length == 0) || (trip.name == "Enter new trip name..")){
+	    alert('Name required');
+		check = false;
+	}
+	if ((trip.start_date.length == 0) || (trip.start_date == "Start date..")){
+	    alert('Start sate required');
+		check = false;
+	} 
+	if ((trip.finish_date.length == 0) || (trip.finish_date == "Finish date..")){
+	    alert('Finish sate required');
+		check = false;
+	} 
+	return check;
+  }
+});
+</script>
 </html>

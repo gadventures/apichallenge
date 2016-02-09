@@ -15,8 +15,27 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework import routers, serializers, viewsets
+from trips import models, views
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = models.Trip
+        fields = ('name', 'start_date', 'finish_date')
+
+		
+class TripViewSet(viewsets.ModelViewSet):
+    queryset = models.Trip.objects.all()
+    serializer_class = UserSerializer
+
+
+router = routers.DefaultRouter()
+router.register(r'trips', TripViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^trips/', include('trips.urls')),
+	url(r'^api/$', views.trip_list),
+	url(r'^api/(?P<pk>[0-9]+)/$', views.trip_detail),
 ]
