@@ -10,6 +10,7 @@
       <h6>Code Challenge by: Abby Greenbloom</h6>
       <div class="trip-results">
           <ul id="results">
+            <li></li>
           </ul>
       </div>
 
@@ -23,7 +24,7 @@
           success : function(json) {
               for (var i = 0; i < json.length; i++) {
                   console.log(json[i])
-                  $("#results").prepend("<li id='trip-"+json[i].id+"'><strong>"+json[i].text+"</strong> - <em> "+json[i].name+"</em> - <span> "+json[i].start_date);
+                  $("#results").prepend("<li id='trip-"+json[i].id+"'><strong><em> "+json[i].name+"</em> - <span> "+json[i].start_date +json[i].finish_date);
               }
           },
           // handle a non-successful response
