@@ -1,6 +1,6 @@
 [
   {
-    "model": "apichallenge.trip",
+    "model": "trips.trip",
     "pk": 1,
     "fields": {
       "name": "Nairobi, Kenya",
@@ -9,7 +9,7 @@
     }
   },
   {
-    "model": "apichallenge.trip",
+    "model": "trips.trip",
     "pk": 2,
     "fields": {
       "name": "Toronto, Canada",
@@ -18,7 +18,7 @@
     }
   },
   {
-    "model": "apichallenge.trip",
+    "model": "trips.trip",
     "pk": 3,
     "fields": {
       "name": "London, United Kingdom",
