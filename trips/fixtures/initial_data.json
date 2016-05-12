@@ -1,0 +1,30 @@
+[
+  {
+    "model": "apichallenge.trip",
+    "pk": 1,
+    "fields": {
+      "name": "Nairobi, Kenya",
+      "start_date": "2016-10-1",
+      "finish_date": "2016-10-12"
+    }
+  },
+  {
+    "model": "apichallenge.trip",
+    "pk": 2,
+    "fields": {
+      "name": "Toronto, Canada",
+      "start_date": "2017-1-10",
+      "finish_date": "2016-1-20"
+    }
+  },
+  {
+    "model": "apichallenge.trip",
+    "pk": 3,
+    "fields": {
+      "name": "London, United Kingdom",
+      "start_date": "2016-7-15",
+      "finish_date": "2016-7-30"
+    }
+  }
+
+]
