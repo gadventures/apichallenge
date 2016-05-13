@@ -1,0 +1,13 @@
+h1, h3 {
+  color: #47268d;
+}
+
+h1 {
+  text-decoration: underline;
+  margin-bottom: 2%;
+}
+
+h1, p {
+  text-align: center;
+
+}

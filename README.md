@@ -1,3 +1,8 @@
+## Results from Challene
+I really enjoyed learning python to complete this challenge. Although it took longer than expected to figure out the syntax and structure of python & django, I have enjoyed figuring out the similarities and differences between ruby on rails and python / django - in particular how files are organized and where different files (ie. templates, views, static files) belong. 
+
+In the process of completing this challenge I fewest problems with the final steps - completing the AJAX requests to view the API on the index page and adding very basic styles using bootstrap and <em> minimal </em> css. I struggled the most with determining the structure of the urls and how to best seed the database, however asking for feedback and doing research I was happy when I was able to overcome these obstacles. While I completed a basic GET request to view the list of all trips, in the future I would like to continue building out the API to make use the application into a basic CRUD app and write tests for both the views and the API itself.
+
 # API Team Challenge
 
 Thank you for your interest in joining G Adventures, and specifically being part

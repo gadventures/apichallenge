@@ -1,10 +1,31 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title> Trips </title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <title> Trips</title>
+    {% load staticfiles %}
 
-<h1>Trips</h1>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'trips/style.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'trips/main.js' %}"> </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Trips</h1>
+      <p>Code Challenge by: Abby Greenbloom</p>
 
-</body>
+
+      <section class="row trip-results">
+          <ul id="results" class = "col-md-8">
+            <!-- section for list of trips to be displayed -->
+            <h3 class=" col-md-8 col-md-offset-2"> Location, Start Date, End Date</h3>
+          </ul>
+      </section>
+
+      <section id="error">  <!-- Section For error message to display if error with API or no trips present--> </section>
+
+    </div>
+
+  </body>
 </html>

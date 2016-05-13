@@ -4,6 +4,10 @@ from django.db import models
 
 
 class Trip(models.Model):
+
     name = models.CharField(max_length=55)
     start_date = models.DateField()
     finish_date = models.DateField()
+
+    class Meta:
+        ordering = ('start_date',)
